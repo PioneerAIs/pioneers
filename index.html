@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>رواد التجديد لتقنية المعلومات</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+background:#07111d;
+color:white;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+background:#2563eb;
+filter:blur(220px);
+opacity:0.12;
+top:-250px;
+right:-250px;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+background:#0ea5e9;
+filter:blur(220px);
+opacity:0.08;
+bottom:-300px;
+left:-250px;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+padding:14px 30px;
+display:flex;
+justify-content:flex-end;
+align-items:center;
+background:rgba(8,15,28,0.72);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:25px;
+z-index:9999;
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:35px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-size:16px;
+font-weight:600;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#60a5fa;
+}
+
+.lang-btn{
+background:white;
+color:#07111d !important;
+padding:12px 22px;
+border-radius:50px;
+font-weight:700;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:170px 8% 80px;
+}
+
+.hero-container{
+width:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.hero-text h1{
+font-size:64px;
+line-height:1.35;
+margin-bottom:25px;
+font-weight:800;
+color:white;
+max-width:650px;
+}
+
+.hero-text p{
+font-size:24px;
+line-height:2;
+color:#cbd5e1;
+margin-bottom:45px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.primary-btn{
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+padding:18px 34px;
+border-radius:60px;
+color:white;
+text-decoration:none;
+font-size:17px;
+font-weight:700;
+transition:0.3s;
+}
+
+.primary-btn:hover{
+transform:translateY(-5px);
+}
+
+.secondary-btn{
+border:1px solid rgba(255,255,255,0.15);
+padding:18px 34px;
+border-radius:60px;
+color:white;
+text-decoration:none;
+font-size:17px;
+font-weight:700;
+background:rgba(255,255,255,0.04);
+transition:0.3s;
+}
+
+.secondary-btn:hover{
+background:white;
+color:#07111d;
+}
+
+/* HERO CARD */
+
+.hero-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-radius:40px;
+padding:35px;
+box-shadow:0 20px 80px rgba(0,0,0,0.4);
+margin-top:-90px;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+}
+
+.hero-card img{
+width:100%;
+max-width:700px;
+border-radius:30px;
+box-shadow:0 25px 60px rgba(0,0,0,0.45);
+}
+
+/* TRUSTED */
+
+.trusted{
+padding:30px 8% 100px;
+text-align:center;
+}
+
+.trusted p{
+color:#94a3b8;
+margin-bottom:40px;
+font-size:18px;
+}
+
+.trusted-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.trusted-box{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:25px;
+padding:28px;
+font-size:20px;
+font-weight:600;
+color:#e2e8f0;
+}
+
+/* GENERAL SECTION */
+
+section{
+padding:120px 8%;
+}
+
+.section-title{
+font-size:64px;
+margin-bottom:35px;
+font-weight:800;
+}
+
+.section-text{
+font-size:24px;
+line-height:2;
+color:#cbd5e1;
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.about-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:40px;
+padding:50px;
+backdrop-filter:blur(20px);
+}
+
+.about-card h3{
+font-size:30px;
+margin-bottom:20px;
+color:#60a5fa;
+}
+
+.about-card p{
+font-size:20px;
+line-height:2;
+color:#cbd5e1;
+}
+
+/* PRODUCTS */
+
+.products-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+gap:35px;
+margin-top:70px;
+}
+
+.product-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:40px;
+overflow:hidden;
+backdrop-filter:blur(20px);
+transition:0.3s;
+}
+
+.product-card:hover{
+transform:translateY(-10px);
+border-color:#2563eb;
+}
+
+.product-card img{
+width:100%;
+height:auto;
+display:block;
+object-fit:contain;
+}
+
+.product-content{
+padding:30px;
+}
+
+.product-content h3{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.product-content p{
+font-size:18px;
+line-height:1.9;
+color:#cbd5e1;
+margin-bottom:30px;
+}
+
+.product-btn{
+display:inline-block;
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+padding:15px 28px;
+border-radius:50px;
+text-decoration:none;
+color:white;
+font-weight:700;
+transition:0.3s;
+}
+
+.product-btn:hover{
+transform:translateY(-4px);
+}
+
+/* WHY */
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+margin-top:60px;
+}
+
+.why-card{
+background:rgba(255,255,255,0.05);
+border-radius:35px;
+padding:40px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+}
+
+.why-card:hover{
+transform:translateY(-10px);
+}
+
+.why-card h3{
+font-size:28px;
+margin-bottom:20px;
+color:#60a5fa;
+}
+
+.why-card p{
+font-size:18px;
+line-height:1.9;
+color:#cbd5e1;
+}
+
+/* CTA */
+
+.cta{
+margin:120px 8%;
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+border-radius:50px;
+padding:100px 40px;
+text-align:center;
+}
+
+.cta h2{
+font-size:64px;
+margin-bottom:30px;
+font-weight:800;
+}
+
+.cta p{
+font-size:24px;
+line-height:2;
+margin-bottom:40px;
+color:#dbeafe;
+}
+
+/* FOOTER */
+
+footer{
+padding:80px 20px;
+text-align:center;
+background:#050b14;
+}
+
+footer p{
+color:#94a3b8;
+font-size:18px;
+margin:10px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.hero-container{
+grid-template-columns:1fr;
+}
+
+.about{
+grid-template-columns:1fr;
+}
+
+.trusted-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.navbar{
+width:95%;
+padding:18px 20px;
+}
+
+.nav-links{
+gap:14px;
+}
+
+.nav-links a{
+font-size:13px;
+}
+
+.hero{
+padding-top:180px;
+}
+
+.hero-text h1{
+font-size:48px;
+}
+
+.hero-text p{
+font-size:18px;
+}
+
+.section-title{
+font-size:40px;
+}
+
+.section-text{
+font-size:18px;
+}
+
+.products-grid{
+grid-template-columns:1fr;
+}
+
+.trusted-grid{
+grid-template-columns:1fr;
+}
+
+.cta h2{
+font-size:42px;
+}
+
+.cta p{
+font-size:18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="nav-links">
+
+<a href="#about">من نحن</a>
+
+<a href="#products">المنتجات</a>
+
+<a href="#why">لماذا نحن</a>
+
+<a href="#contact">تواصل معنا</a>
+
+<a href="english.html" class="lang-btn">
+EN
+</a>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-container">
+
+<div class="hero-text">
+
+<h1>
+نبني تجارب رقمية حديثة
+</h1>
+
+<p>
+حلول تقنية متقدمة وتمكين رقمي عبر تكامل الأنظمة،
+والذكاء الاصطناعي،
+والوصول الرقمي،
+والمنصات الذكية الحديثة.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#products" class="primary-btn">
+استعرض المنتجات
+</a>
+
+<a href="#contact" class="secondary-btn">
+تواصل معنا
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<img src="aa.png">
+
+</div>
+
+</div>
+
+</section>
+
+<section class="trusted">
+
+<p>
+حلول تقنية حديثة بمستوى مؤسسي
+</p>
+
+<div class="trusted-grid">
+
+<div class="trusted-box">
+الذكاء الاصطناعي
+</div>
+
+<div class="trusted-box">
+تكامل الأنظمة
+</div>
+
+<div class="trusted-box">
+الوصول الرقمي
+</div>
+
+<div class="trusted-box">
+التحول الرقمي
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="about">
+
+<div>
+
+<h2 class="section-title">
+من نحن
+</h2>
+
+<p class="section-text">
+
+رواد التجديد لتقنية المعلومات تقدم حلول تقنية حديثة،
+ومنتجات ذكية،
+ومنصات رقمية تساعد الجهات على تطوير التجارب الرقمية
+وتسريع التحول التقني.
+
+</p>
+
+</div>
+
+<div class="about-card">
+
+<h3>
+الابتكار المؤسسي
+</h3>
+
+<p>
+
+نجمع بين الذكاء الاصطناعي،
+وتكامل الأنظمة،
+والحلول الرقمية الحديثة
+لبناء تجارب تقنية عصرية ومتطورة.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="products">
+
+<h2 class="section-title">
+منتجاتنا
+</h2>
+
+<div class="products-grid">
+
+<div class="product-card">
+
+<img src="11.PNG">
+
+<div class="product-content">
+
+<h3>
+إنسجام
+</h3>
+
+<p>
+
+حلول وصول رقمي ذكية لتحسين تجربة المستخدم
+ودعم معايير الوصول WCAG.
+
+</p>
+
+<a href="insijam.html" class="product-btn">
+عرض المنتج
+</a>
+
+</div>
+
+</div>
+
+<div class="product-card">
+
+<img src="IMG_1200.PNG">
+
+<div class="product-content">
+
+<h3>
+تدوين
+</h3>
+
+<p>
+
+منصة ذكية للاجتماعات تقوم بالتسجيل،
+والتفريغ النصي،
+والتلخيص بشكل احترافي.
+
+</p>
+
+<a href="tadween.html" class="product-btn">
+عرض المنتج
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="why">
+
+<h2 class="section-title">
+لماذا نحن
+</h2>
+
+<div class="why-grid">
+
+<div class="why-card">
+
+<h3>
+حلول حديثة
+</h3>
+
+<p>
+نستخدم أحدث التقنيات لبناء منتجات رقمية متطورة.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<h3>
+تركيز على التجربة
+</h3>
+
+<p>
+تصميم تجارب استخدام حديثة وسريعة وسهلة الوصول.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<h3>
+ذكاء اصطناعي
+</h3>
+
+<p>
+دمج تقنيات الذكاء الاصطناعي في المنتجات والخدمات.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>
+جاهزون لبناء حلول رقمية حديثة
+</h2>
+
+<p>
+نساعد الجهات على تطوير تجاربها الرقمية
+بأحدث التقنيات والمنصات الذكية.
+</p>
+
+<a href="#contact" class="primary-btn">
+تواصل معنا
+</a>
+
+</section>
+
+<footer id="contact">
+
+<p>
+رواد التجديد لتقنية المعلومات
+</p>
+
+<p>
+info@company.com
+</p>
+
+<p>
+الرياض - المملكة العربية السعودية
+</p>
+
+</footer>
+
+</body>
+
+</html>

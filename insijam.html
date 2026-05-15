@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Insijam</title>
+
+  <!-- FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#ffffff;
+      color:#111827;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND GLOW */
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:#6d5dfc;
+      filter:blur(180px);
+      opacity:0.12;
+      top:-300px;
+      right:-250px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:600px;
+      height:600px;
+      background:#7c3aed;
+      filter:blur(180px);
+      opacity:0.08;
+      bottom:-250px;
+      left:-200px;
+      z-index:-1;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:22px 60px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(255,255,255,0.65);
+      backdrop-filter:blur(20px);
+      z-index:9999;
+      border-bottom:1px solid rgba(255,255,255,0.4);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:800;
+      color:#6d5dfc;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#111827;
+      font-size:16px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#6d5dfc;
+    }
+
+    .back-btn{
+      background:#111827;
+      color:white !important;
+      padding:12px 22px;
+      border-radius:50px;
+    }
+
+    /* HERO */
+
+    .hero{
+  min-height:100vh;
+  background:linear-gradient(135deg,#4f46e5,#6d5dfc);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  text-align:center;
+  padding:120px 20px 60px;
+  position:relative;
+  overflow:hidden;
+}
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:600px;
+      height:600px;
+      background:white;
+      opacity:0.06;
+      border-radius:50%;
+      top:-250px;
+      right:-150px;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:white;
+      opacity:0.05;
+      border-radius:50%;
+      bottom:-250px;
+      left:-100px;
+    }
+
+   .hero-content{
+  position:relative;
+  z-index:2;
+  max-width:1100px;
+  margin-top:0;
+}
+
+    .hero-logo{
+      width:260px;
+      margin-bottom:40px;
+    }
+
+    .hero h1{
+      font-size:92px;
+      line-height:1;
+      color:white;
+      font-weight:800;
+      margin-bottom:35px;
+    }
+
+    .hero p{
+      font-size:28px;
+      line-height:1.8;
+      color:#ede9fe;
+      margin-bottom:50px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      background:white;
+      color:#111827;
+      padding:18px 38px;
+      border-radius:60px;
+      text-decoration:none;
+      font-size:17px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+    }
+
+    .btn-secondary{
+      border:2px solid rgba(255,255,255,0.3);
+      color:white;
+      padding:18px 38px;
+      border-radius:60px;
+      text-decoration:none;
+      font-size:17px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn-secondary:hover{
+      background:white;
+      color:#111827;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:130px 8%;
+    }
+
+    .section-title{
+      font-size:68px;
+      font-weight:800;
+      margin-bottom:40px;
+      line-height:1.1;
+      color:#111827;
+    }
+
+    .section-text{
+      font-size:24px;
+      line-height:2;
+      color:#4b5563;
+      max-width:1100px;
+    }
+
+
+/* ABOUT SECTION */
+
+.about-section{
+  background:linear-gradient(180deg,#f5f3ff,#ebe7ff);
+}
+    /* FEATURES */
+
+    .features{
+      background:#f8f7ff;
+    }
+
+    .features-grid{
+      margin-top:80px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      background:white;
+      padding:40px;
+      border-radius:35px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.06);
+      transition:0.35s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .feature-card h3{
+      font-size:28px;
+      margin-bottom:20px;
+      color:#6d5dfc;
+    }
+
+    .feature-card p{
+      font-size:18px;
+      line-height:1.9;
+      color:#4b5563;
+    }
+
+    /* PROFILES */
+
+    .profiles-grid{
+      margin-top:70px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .profile{
+      background:#6d5dfc;
+      color:white;
+      padding:35px;
+      border-radius:30px;
+      text-align:center;
+      font-size:22px;
+      font-weight:700;
+    }
+
+    /* SECTORS */
+
+    .sectors{
+      background:#111827;
+      color:white;
+    }
+
+    .sectors .section-title{
+      color:white;
+    }
+
+    .sectors .section-text{
+      color:#d1d5db;
+    }
+
+    .sector-grid{
+      margin-top:70px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .sector-card{
+      border:1px solid rgba(255,255,255,0.15);
+      padding:35px;
+      border-radius:30px;
+      text-align:center;
+      font-size:20px;
+      font-weight:600;
+      background:rgba(255,255,255,0.03);
+      backdrop-filter:blur(10px);
+    }
+
+    /* CTA */
+
+    .cta{
+      background:linear-gradient(135deg,#6d5dfc,#4f46e5);
+      color:white;
+      text-align:center;
+      border-radius:50px;
+      margin:120px 8%;
+      padding:100px 40px;
+    }
+
+    .cta h2{
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:35px;
+      font-weight:800;
+    }
+
+    .cta p{
+      font-size:26px;
+      line-height:1.9;
+      color:#ede9fe;
+      margin-bottom:50px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:70px 20px;
+      text-align:center;
+      background:#0f172a;
+      color:white;
+    }
+
+    footer p{
+      font-size:18px;
+      color:#cbd5e1;
+      margin:10px 0;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .navbar{
+        padding:18px 20px;
+      }
+
+      .nav-links{
+        gap:15px;
+      }
+
+      .nav-links a{
+        font-size:13px;
+      }
+
+      .hero{
+        padding-top:180px;
+      }
+
+      .hero-logo{
+        width:180px;
+      }
+
+      .hero h1{
+        font-size:48px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .section-title{
+        font-size:42px;
+      }
+
+      .section-text{
+        font-size:18px;
+      }
+
+      .feature-card h3{
+        font-size:24px;
+      }
+
+      .feature-card p{
+        font-size:16px;
+      }
+
+      .cta h2{
+        font-size:42px;
+      }
+
+      .cta p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      Insijam
+    </div>
+
+    <div class="nav-links">
+
+      <a href="#features">Features</a>
+
+      <a href="#profiles">Profiles</a>
+
+      <a href="#sectors">Sectors</a>
+
+      <a href="#contact">Contact</a>
+
+      <a href="english.html" class="back-btn">
+        Back
+      </a>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Accessibility Layer<br>
+        For Any Platform
+      </h1>
+
+      <p>
+        Make your digital experience inclusive, compliant,
+        and user-adaptive instantly without redesigning your website.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#contact" class="btn-primary">
+          Book Demo
+        </a>
+
+        <a href="#features" class="btn-secondary">
+          Explore Features
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+<section class="about-section">
+
+  <h2 class="section-title">
+    Why Accessibility Matters?
+  </h2>
+
+  <p class="section-text">
+    Over 1 billion people worldwide live with disabilities
+    and rely on accessible digital experiences.
+    Most existing websites were never designed for accessibility,
+    exposing organizations to compliance risks,
+    lost users, and poor digital inclusivity.
+  </p>
+
+</section>
+
+  <!-- FEATURES -->
+
+  <section class="features" id="features">
+
+    <h2 class="section-title">
+      Core Features
+    </h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+
+        <h3>Visual Accessibility</h3>
+
+        <p>
+          Font resizing, spacing controls,
+          dyslexia-friendly fonts, high contrast mode,
+          dark mode, grayscale, and color muting.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Reading Support</h3>
+
+        <p>
+          Reading guides, focus mode,
+          reading masks, and cognitive-friendly layouts
+          for distraction-free experiences.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Navigation & Motor</h3>
+
+        <p>
+          Full keyboard navigation,
+          skip-to-content shortcuts,
+          visible focus indicators,
+          and enhanced cursor support.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Audio & Structure</h3>
+
+        <p>
+          Arabic & English text-to-speech,
+          sound muting,
+          link highlighting,
+          and improved content discoverability.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>WCAG Compliance</h3>
+
+        <p>
+          DGA 5.2.2 aligned and WCAG 2.1 AA aligned
+          to help organizations meet accessibility standards.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Plug & Play</h3>
+
+        <p>
+          Lightweight accessibility layer
+          that integrates instantly into any website
+          without redesigning the platform.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROFILES -->
+
+  <section id="profiles">
+
+    <h2 class="section-title">
+      One-Click Accessibility Profiles
+    </h2>
+
+    <div class="profiles-grid">
+
+      <div class="profile">
+        Cognitive Support
+      </div>
+
+      <div class="profile">
+        Low Vision
+      </div>
+
+      <div class="profile">
+        Dyslexia Support
+      </div>
+
+      <div class="profile">
+        Keyboard Navigation
+      </div>
+
+      <div class="profile">
+        Seizure Safe
+      </div>
+
+      <div class="profile">
+        Visually Impaired
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SECTORS -->
+
+  <section class="sectors" id="sectors">
+
+    <h2 class="section-title">
+      Built For Organizations That Serve Everyone
+    </h2>
+
+    <p class="section-text">
+      Insijam fits sectors where accessibility,
+      inclusion, and compliance matter most.
+    </p>
+
+    <div class="sector-grid">
+
+      <div class="sector-card">
+        Government & Public Sector
+      </div>
+
+      <div class="sector-card">
+        Educational Institutions
+      </div>
+
+      <div class="sector-card">
+        Healthcare Providers
+      </div>
+
+      <div class="sector-card">
+        Financial Institutions
+      </div>
+
+      <div class="sector-card">
+        Enterprise Platforms
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta" id="contact">
+
+    <h2>
+      Make Your Website<br>
+      Accessible Today
+    </h2>
+
+    <p>
+      Book a live demo on your platform
+      and receive a free WCAG readiness assessment.
+    </p>
+
+<a href="#contact-info" class="btn-primary">
+
+      Contact Us
+    </a>
+
+  </section>
+
+  <footer id="contact-info">
+
+  <p>
+    Innovation Pioneers For Information Technology
+  </p>
+
+  <p>
+    info@company.com
+  </p>
+
+  <p>
+    Riyadh - Saudi Arabia
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>

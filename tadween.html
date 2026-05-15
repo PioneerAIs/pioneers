@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tadween</title>
+
+  <!-- FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#07111d;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:#ff5b00;
+      filter:blur(220px);
+      opacity:0.08;
+      top:-300px;
+      right:-200px;
+      z-index:-1;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:22px 60px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(7,17,29,0.7);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      z-index:9999;
+    }
+
+    .logo{
+      font-size:34px;
+      font-weight:800;
+      color:#ff5b00;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color:white;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#ff5b00;
+    }
+
+    .back-btn{
+      background:#ff5b00;
+      color:white !important;
+      padding:12px 24px;
+      border-radius:50px;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:180px 20px 120px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-content{
+      max-width:1200px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  margin-bottom:45px;
+}
+
+.brand-icon{
+  width:110px;
+  height:110px;
+  background:#0b1624;
+  border-radius:28px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  box-shadow:0 10px 35px rgba(255,91,0,0.18);
+}
+
+.brand-icon img{
+  width:82%;
+  height:82%;
+  object-fit:contain;
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1;
+}
+
+.arabic-name{
+  font-size:42px;
+  font-weight:950;
+  color:#ff6a00;
+  line-height:1;
+}
+
+.english-name{
+  font-size:27px;
+  font-weight:1000;
+  color:#ff6a00;
+  margin-top:4px;
+  line-height:1;
+}
+
+    .hero h1{
+      font-size:92px;
+      line-height:1;
+      font-weight:800;
+      margin-bottom:40px;
+    }
+
+    .hero p{
+      font-size:28px;
+      line-height:1.8;
+      color:#d1d5db;
+      margin-bottom:50px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      background:#ff5b00;
+      color:white;
+      padding:18px 38px;
+      border-radius:60px;
+      text-decoration:none;
+      font-size:17px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+    }
+
+    .btn-secondary{
+      border:2px solid rgba(255,255,255,0.12);
+      color:white;
+      padding:18px 38px;
+      border-radius:60px;
+      text-decoration:none;
+      font-size:17px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn-secondary:hover{
+      background:#ff5b00;
+      border-color:#ff5b00;
+    }
+
+    /* GENERAL */
+
+    section{
+      padding:130px 8%;
+    }
+
+    .section-title{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:40px;
+      font-weight:800;
+    }
+
+    .section-text{
+      font-size:24px;
+      line-height:2;
+      color:#cbd5e1;
+      max-width:1100px;
+    }
+
+    /* PROBLEM */
+
+    .problem{
+      background:#0c1726;
+    }
+
+    .problem h2{
+      color:#ff5b00;
+    }
+
+    /* INTRO */
+
+    .intro-boxes{
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+      margin-top:80px;
+    }
+
+    .intro-box{
+      width:260px;
+      border:2px solid #ff5b00;
+      border-radius:30px;
+      padding:40px 30px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .intro-box:hover{
+      transform:translateY(-10px);
+      background:#101d2d;
+    }
+
+    .intro-box h3{
+      font-size:34px;
+      margin-bottom:20px;
+      color:#ff5b00;
+    }
+
+    .intro-box p{
+      font-size:18px;
+      line-height:1.8;
+      color:#cbd5e1;
+    }
+
+    /* FEATURES */
+
+    .features-grid{
+      margin-top:80px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      border:2px solid rgba(255,91,0,0.35);
+      background:#0d1827;
+      border-radius:35px;
+      padding:40px;
+      transition:0.35s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+      border-color:#ff5b00;
+    }
+
+    .feature-card h3{
+      font-size:28px;
+      color:#ff5b00;
+      margin-bottom:20px;
+    }
+
+    .feature-card p{
+      font-size:18px;
+      line-height:1.9;
+      color:#d1d5db;
+    }
+
+    /* WORKFLOW */
+
+    .workflow{
+      background:#0c1726;
+    }
+
+    .timeline{
+      margin-top:80px;
+      display:flex;
+      flex-direction:column;
+      gap:35px;
+    }
+
+    .step{
+      display:flex;
+      gap:35px;
+      align-items:flex-start;
+      background:#101d2d;
+      border-radius:30px;
+      padding:35px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .step-number{
+      min-width:90px;
+      height:90px;
+      background:#ff5b00;
+      border-radius:25px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:34px;
+      font-weight:800;
+    }
+
+    .step-content h3{
+      font-size:32px;
+      margin-bottom:15px;
+    }
+
+    .step-content p{
+      font-size:20px;
+      line-height:1.8;
+      color:#d1d5db;
+    }
+
+    /* INTEGRATIONS */
+
+    .integrations-grid{
+      margin-top:70px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .integration{
+      background:#101d2d;
+      border:2px solid rgba(255,91,0,0.3);
+      padding:35px;
+      border-radius:30px;
+      text-align:center;
+      font-size:28px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .integration:hover{
+      border-color:#ff5b00;
+      transform:translateY(-8px);
+    }
+
+    /* CTA */
+
+    .cta{
+      margin:120px 8%;
+      background:linear-gradient(135deg,#ff5b00,#ff7b00);
+      padding:120px 40px;
+      border-radius:50px;
+      text-align:center;
+    }
+
+    .cta h2{
+      font-size:82px;
+      line-height:1.1;
+      margin-bottom:35px;
+      font-weight:800;
+    }
+
+    .cta p{
+      font-size:28px;
+      line-height:1.8;
+      color:#fff7ed;
+      margin-bottom:50px;
+    }
+
+    .cta .btn-primary{
+      background:white;
+      color:#111827;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#050c14;
+      padding:80px 20px;
+      text-align:center;
+    }
+
+    footer p{
+      color:#94a3b8;
+      font-size:18px;
+      margin:12px 0;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .navbar{
+        padding:18px 20px;
+      }
+
+      .nav-links{
+        gap:15px;
+      }
+
+      .nav-links a{
+        font-size:13px;
+      }
+
+      .hero{
+        padding-top:190px;
+      }
+
+      .hero-logo{
+        width:170px;
+      }
+
+      .hero h1{
+        font-size:52px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .section-title{
+        font-size:42px;
+      }
+
+      .section-text{
+        font-size:18px;
+      }
+
+      .step{
+        flex-direction:column;
+      }
+
+      .cta h2{
+        font-size:46px;
+      }
+
+      .cta p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      Tadween
+    </div>
+
+    <div class="nav-links">
+
+      <a href="#features">Features</a>
+
+      <a href="#workflow">Workflow</a>
+
+      <a href="#integrations">Integrations</a>
+
+      <a href="#contact-info">Contact</a>
+
+      <a href="english.html" class="back-btn">
+        Back
+      </a>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-brand">
+
+  <div class="brand-icon">
+    <img src="TadweenLogo.PNG" alt="Tadween Logo">
+  </div>
+
+  <div class="brand-text">
+    <span class="arabic-name">تــدويــن</span>
+    <span class="english-name">Tadween</span>
+  </div>
+
+</div>
+
+      <h1>
+        Arabic-First<br>
+        Meeting Intelligence
+      </h1>
+
+      <p>
+        Record, transcribe, summarize,
+        and turn every meeting into actionable outcomes.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#contact-info" class="btn-primary">
+          Book Demo
+        </a>
+
+        <a href="#features" class="btn-secondary">
+          Explore Features
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROBLEM -->
+
+  <section class="problem">
+
+    <h2 class="section-title">
+      Meetings Should Not End With Manual Notes
+    </h2>
+
+    <p class="section-text">
+      Tadween solves inaccurate transcripts,
+      hours wasted writing minutes,
+      and the lack of a single source of truth
+      for decisions, action items, and follow-ups.
+    </p>
+
+  </section>
+
+  <!-- INTRO -->
+
+  <section>
+
+    <h2 class="section-title">
+      Built For How Arabic Teams Actually Meet
+    </h2>
+
+    <p class="section-text">
+      Tadween records, transcribes,
+      summarizes, and transforms meetings into action.
+    </p>
+
+    <div class="intro-boxes">
+
+      <div class="intro-box">
+
+        <h3>Record</h3>
+
+        <p>
+          Capture meetings via bot,
+          quick recording,
+          or scheduled sessions.
+        </p>
+
+      </div>
+
+      <div class="intro-box">
+
+        <h3>Transcribe</h3>
+
+        <p>
+          Convert Arabic and English speech
+          into accurate searchable text instantly.
+        </p>
+
+      </div>
+
+      <div class="intro-box">
+
+        <h3>Act</h3>
+
+        <p>
+          Generate minutes,
+          assign tasks,
+          and share outcomes automatically.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section id="features">
+
+    <h2 class="section-title">
+      Core Capabilities
+    </h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+
+        <h3>Native Arabic Dialects</h3>
+
+        <p>
+          Accurate transcription for Najdi,
+          Hejazi, Khaleeji,
+          Janubi and mixed Arabic dialects.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Bilingual Meetings</h3>
+
+        <p>
+          Smooth Arabic & English code-switching
+          captured cleanly without garbled text.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Speaker Recognition</h3>
+
+        <p>
+          Detect speakers,
+          names,
+          and voice identities accurately.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Automated MoM</h3>
+
+        <p>
+          Generate meeting summaries,
+          decisions,
+          and action items automatically.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Calendar Integration</h3>
+
+        <p>
+          Connect meetings directly with
+          Google Calendar and Outlook.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <h3>Task Management</h3>
+
+        <p>
+          Turn meeting decisions into assigned tasks
+          with due dates and notifications.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- WORKFLOW -->
+
+  <section class="workflow" id="workflow">
+
+    <h2 class="section-title">
+      How Tadween Works
+    </h2>
+
+    <div class="timeline">
+
+      <div class="step">
+
+        <div class="step-number">
+          01
+        </div>
+
+        <div class="step-content">
+
+          <h3>Schedule or Start Meeting</h3>
+
+          <p>
+            Create a meeting or start recording instantly.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+          02
+        </div>
+
+        <div class="step-content">
+
+          <h3>Record</h3>
+
+          <p>
+            Bot joins your call or captures audio directly.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+          03
+        </div>
+
+        <div class="step-content">
+
+          <h3>Transcribe</h3>
+
+          <p>
+            Audio becomes searchable text in your dialect.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+          04
+        </div>
+
+        <div class="step-content">
+
+          <h3>Review MoM</h3>
+
+          <p>
+            Edit and finalize the generated meeting minutes.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+          05
+        </div>
+
+        <div class="step-content">
+
+          <h3>Share & Assign</h3>
+
+          <p>
+            Share meeting outcomes
+            and distribute action items.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- INTEGRATIONS -->
+
+  <section id="integrations">
+
+    <h2 class="section-title">
+      Integrations
+    </h2>
+
+    <p class="section-text">
+      Tadween connects directly with
+      modern collaboration and meeting platforms.
+    </p>
+
+    <div class="integrations-grid">
+
+      <div class="integration">
+        Zoom
+      </div>
+
+      <div class="integration">
+        Teams
+      </div>
+
+      <div class="integration">
+        Google Meet
+      </div>
+
+      <div class="integration">
+        Outlook
+      </div>
+
+      <div class="integration">
+        Google Calendar
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>
+      Let’s Make Your Meetings Work Harder
+    </h2>
+
+    <p>
+      Transform every discussion into searchable knowledge,
+      actionable tasks,
+      and measurable outcomes.
+    </p>
+
+    <a href="#contact-info" class="btn-primary">
+      Contact Us
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer id="contact-info">
+
+    <p>
+      Innovation Pioneers For Information Technology
+    </p>
+
+    <p>
+      info@company.com
+    </p>
+
+    <p>
+      Riyadh - Saudi Arabia
+    </p>
+
+  </footer>
+
+</body>
+
+</html>
